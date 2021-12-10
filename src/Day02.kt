@@ -1,4 +1,11 @@
 fun main() {
+    val part1TestResult = 150
+    val part2TestResult = 900
+
+    fun loadAndPrepareInput(name: String): List<List<String>> {
+        return readInput(name).map { it.split(' ') }
+    }
+
     fun part1(operations: List<List<String>>): Int {
         var depth = 0
         var horizontalPosition = 0
@@ -36,12 +43,11 @@ fun main() {
     }
 
     // test if implementation meets criteria from the description, like:
-    val testInput = readInput("Day02_test").map { it.split(' ') }
+    val testInput = loadAndPrepareInput("Day02_test")
+    check(part1(testInput) == part1TestResult)
+    check(part2(testInput) == part2TestResult)
 
-    check(part1(testInput) == 150)
-    check(part2(testInput) == 900)
-
-    val input = readInput("Day02").map { it.split(' ') }
+    val input = loadAndPrepareInput("Day02")
     println(part1(input))
     println(part2(input))
 }
